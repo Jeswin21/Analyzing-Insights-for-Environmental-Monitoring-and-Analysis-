@@ -24,23 +24,27 @@ Data analysis is performed on the pre-processed data from the previous module an
 
 Task 1: Write an SQL query to solve the given problem statement.
 Find the average temperature recorded for each device.
+
 Ans: SELECT device_id, AVG(temperature) 
 FROM cleaned_environment
 GROUP BY device_id;
 
 Task 2: Write an SQL query to solve the given problem statement.
 Calculate the average temperature recorded in the cleaned_environment table.
+
 Ans: SELECT AVG(temperature) AS average_temperature
 FROM cleaned_environment;
 
 Task 3: Write an SQL query to solve the given problem statement.
 Find the timestamp and temperature of the highest recorded temperature for each device.
+
 Ans: SELECT device_id, timestamp, MAX(temperature) 
 FROM cleaned_environment
 GROUP BY device_id;
 
 Task 4: Write an SQL query to solve the given problem statement.
 Identify devices where the temperature has increased from the minimum recorded temperature to the maximum recorded temperature
+
 Ans: SELECT device_id
 FROM (
   SELECT device_id, MIN(temperature) AS min_temperature, MAX(temperature) AS max_temperature
@@ -51,6 +55,7 @@ WHERE max_temperature > min_temperature;
 
 Task 5: Write an SQL query to solve the given problem statement.
 Calculate the exponential moving average of temperature for each device limit to 10 devices.
+
 Ans: WITH ema_calculation AS (
 SELECT device_id, timestamp, temperature,
 AVG(temperature) OVER (PARTITION BY device_id
@@ -64,6 +69,7 @@ limit 10;
 
 Task 6: Write an SQL query to solve the given problem statement.
 Find the timestamps and devices where the carbon monoxide level exceeds the average carbon monoxide level of all devices.
+
 Ans: SELECT timestamp, device_id
 FROM cleaned_environment
 WHERE carbon_monoxide > (
@@ -72,12 +78,14 @@ WHERE carbon_monoxide > (
 
 Task 7: Write an SQL query to solve the given problem statement.
 Retrieve the devices with the highest average temperature recorded.
+
 Ans: SELECT device_id, AVG(temperature) as average_temperature
 FROM cleaned_environment
 GROUP BY device_id;
 
 Task 8: Write an SQL query to solve the given problem statement.
 Calculate the average temperature for each hour of the day across all devices.
+
 Ans: SELECT EXTRACT(HOUR FROM timestamp) AS hour_of_day, AVG(temperature) AS average_temperature
 FROM cleaned_environment
 GROUP BY EXTRACT(HOUR FROM timestamp)
@@ -85,6 +93,7 @@ ORDER BY hour_of_day
 
 Task 9: Write an SQL query to solve the given problem statement.
 Which device(s) in the cleaned environment dataset has recorded only a single distinct temperature value?
+
 Ans: SELECT device_id
 FROM cleaned_environment
 GROUP BY device_id
@@ -92,6 +101,7 @@ HAVING COUNT(DISTINCT temperature) = 1
 
 Task 10: Write an SQL query to solve the given problem statement.
 Calculate the average temperature for each device, excluding outliers (temperatures beyond 3 standard deviations).
+
 Ans: SELECT device_id, AVG(temperature) AS avg_temperature
 FROM cleaned_environment
 WHERE temperature > (
@@ -102,6 +112,7 @@ GROUP BY device_id;
 
 Task 11: Write an SQL query to solve the given problem statement.
 Retrieve the devices that have experienced a sudden change in humidity (greater than 50% difference) within a 30-minute window.
+
 Ans: SELECT device_id,timestamp, humidity
 FROM (
 SELECT device_id, humidity, timestamp,
@@ -114,6 +125,7 @@ AND TIMESTAMPDIFF(SECOND, prev_timestamp, timestamp) <= 1800
 
 Task 12: Write an SQL query to solve the given problem statement.
 Find the average temperature for each device during weekdays and weekends separately.
+
 Ans: SELECT
   device_id,
   CASE
@@ -128,6 +140,7 @@ GROUP BY
 
 Task 13: Write an SQL query to solve the given problem statement.
 Calculate the cumulative sum of temperature for each device, ordered by timestamp limit to 10.
+
 Ans: SELECT
   device_id,
   timestamp,
