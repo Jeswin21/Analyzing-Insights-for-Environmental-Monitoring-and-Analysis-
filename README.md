@@ -6,15 +6,23 @@ Description: This project uses SQL to analyze a real-world database, how to extr
 Data Pre-processing is one of the important steps in data analytics because data that is not processed can lead to different unwanted results when the data will be used for further applications. This task includes sub-tasks such as handling null values, deletion or transformation of irrelevant values, datatype transformation, removing duplicates, etc. The tasks to be performed for cleaning the data set are given below:
 
 Reading the Data from CSV
+
 Renaming the columns
+
 Checking for null values
+
 Removing Duplicates
+
 Handling missing values
+
 Data type conversion
+
 Exporting the cleaned dataset
+
 Generate tables using the cleaned dataset
 
 File: Analyzing insights for environmental monitoring and analysis.ipynb
+
 Uncleaned Dataset: iot_telemetry_data.csv
 Cleaned dataset: Cleaned environment.csv
 
