@@ -24,6 +24,7 @@ Generate tables using the cleaned dataset
 File: Analyzing insights for environmental monitoring and analysis.ipynb
 
 Uncleaned Dataset: iot_telemetry_data.csv
+
 Cleaned dataset: Cleaned environment.csv
 
 # Module 2 Data Analysis using SQL:
